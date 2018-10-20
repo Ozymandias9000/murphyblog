@@ -11,7 +11,16 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     padding: 0;
     margin: 0;
+  }
+
+  div {
     font-family: "prompt", sans-serif;
+  }
+
+  a {
+    color: #3355dd;
+    text-decoration: none;
+    opacity: 0.5;
   }
 `;
 
@@ -36,8 +45,8 @@ const Layout = ({ data }) => {
 
   return (
     <>
-      <Header />
       <GlobalStyle />
+      <Header />
       <MainDiv>
         {edges.map(edge => {
           const { frontmatter } = edge.node;
