@@ -4,6 +4,7 @@ module.exports = {
     description: "Beautiful Blog."
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
     {

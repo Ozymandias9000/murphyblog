@@ -2,25 +2,24 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import MainDiv from "../styles/MainDiv";
 import PostNav from "../styles/PostNav";
+import Layout from "../components/Layout";
 
 const Template = ({ data, pathContext }) => {
+  const { prev, next } = pathContext;
   const { markdownRemark } = data;
   const title = markdownRemark.frontmatter.title;
   const html = markdownRemark.html;
 
   return (
-    <MainDiv>
+    <Layout>
       <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <MainDiv dangerouslySetInnerHTML={{ __html: html }} />
+
       <PostNav>
-        {pathContext.prev && (
-          <Link to={pathContext.prev.frontmatter.path}>Previous Post</Link>
-        )}
-        {pathContext.next && (
-          <Link to={pathContext.next.frontmatter.path}>Next Post</Link>
-        )}
+        {prev && <Link to={prev.frontmatter.path}>Previous Post</Link>}
+        {next && <Link to={next.frontmatter.path}>Next Post</Link>}
       </PostNav>
-    </MainDiv>
+    </Layout>
   );
 };
 

@@ -26,13 +26,15 @@ exports.createPages = ({ graphql, actions }) => {
 
         posts.forEach(({ node }, index) => {
           const path = node.frontmatter.path;
+          const totalLength = posts.length - 1;
+
           createPage({
             path,
             component: blogPostTemplate,
             context: {
               pathSlug: path,
               prev: index === 0 ? null : posts[index - 1].node,
-              next: index === posts.length - 1 ? null : posts[index + 1].node
+              next: index === totalLength ? null : posts[index + 1].node
             }
           });
           resolve();
